@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Mock Hacker News</h1>
         <div className="Navbar">
           <p>New</p>
           <p>Past</p>
