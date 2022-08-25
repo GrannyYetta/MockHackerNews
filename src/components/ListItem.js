@@ -1,21 +1,22 @@
 import React from "react";
-import axios from "axios";
+import moment from 'moment';
+
 const ListItem = (props) => {
-  // fetch(`http://hn.algolia.com/api/v1/search?query=react`).then((response) =>
-  //   response.json()
-  // );
+  const mainUrl = (url) => {
+    if (url){
+      return url.split("/")[2];
+    }
+  }
 
   return (
-    <li className="list-item">
-      <div className="title-container">
-        <h3>Title</h3>
-        <p>(webpage)</p>
-      </div>
-      <div className="subtitle-container">
-        <p>147 points by asdf 3 hours ago | hide | 10 comments</p>
-      </div>
-    </li>
+    <div>
+         <div className="item">
+            <span className="title">{props.data.title}</span>
+            <span className="url"><a href={props.data.url}>({mainUrl(props.data.url)})</a></span>
+            <p className="subtitle">{props.data.points} points by {props.data.author} {moment(props.data.created_at).fromNow()} | {props.data.num_comments} comments</p>
+         </div>
+   </div>
   );
-};
+}
 
 export default ListItem;
