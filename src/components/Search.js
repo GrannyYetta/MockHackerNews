@@ -10,7 +10,16 @@ const Search = (props) => {
   const submit = (e) => {
     e.preventDefault();
     props.setQuery(inputText);
-  };
+    props.setPaginate(5);
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) { 
+        e.preventDefault();
+        props.setQuery(inputText);
+        props.setPaginate(5);
+    }
+  }
 
   return (
     <div>
@@ -19,6 +28,7 @@ const Search = (props) => {
           type="text"
           className="input-field"
           onChange={inputHandler}
+          onKeyDown={handleKeyDown}
           placeholder="Search Hacker News"
         />
         <button type="submit" className="search-btn">
