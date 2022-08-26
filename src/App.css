@@ -47,17 +47,19 @@ body{
 }
 
 .List-Container{
-  background-color: var(--brighter);
+  background-color: var(--dark);
   padding: 5rem;
 }
 
 .item {
   padding: 1em;
   list-style-type: none;
-  border-radius: 6px;
   margin-bottom: 1em;
   background: #fff;
-  box-shadow: 0px 2px 6px 2px #0002;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #268575, #175248);
+  box-shadow:  5px 5px 0px #0b2722,
+               -5px -5px 0px #32E0C4;
 }
 
 .title{
@@ -73,6 +75,6 @@ body{
 }
 
 .subtitle {
-  color: rgb(121, 121, 121);
+  color: rgb(255, 254, 254);
   margin: 1em 0;
 }

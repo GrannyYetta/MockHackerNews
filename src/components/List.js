@@ -7,7 +7,6 @@ const List = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
 
-
   useEffect(() => {
     axios
       .get(`http://hn.algolia.com/api/v1/search?query=${query}`)
@@ -19,11 +18,11 @@ const List = () => {
 
     //const [info ,setInfo]= useState(response.data);
   }, [query]);
-
+  console.log(data);
   return (
     <>
       <div className="Search">
-        <Search setQuery={setQuery}/>
+        <Search setQuery={setQuery} />
       </div>
       <ol className="list">
         {data.map((newsItem) => {
