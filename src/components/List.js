@@ -21,7 +21,6 @@ const List = () => {
   const loadMore = () => {
     setPaginate((prevValue) => prevValue + 5);
   }
-
   return (
     <>
       <div className="Search">
