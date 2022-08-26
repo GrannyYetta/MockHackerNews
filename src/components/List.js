@@ -6,27 +6,28 @@ import Search from "./Search";
 const List = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
+  const [paginate, setPaginate] = useState(5);
 
   useEffect(() => {
     axios
       .get(`http://hn.algolia.com/api/v1/search?query=${query}`)
       .then((response) => {
         setData(response.data.hits);
-        // console.log(response.data.hits);
       })
       .catch((err) => alert(err));
 
-    //const [info ,setInfo]= useState(response.data);
   }, [query]);
-  console.log(data);
+
+  const loadMore = () => {
+    setPaginate((prevValue) => prevValue + 5);
+  }
   return (
     <>
       <div className="Search">
-        <Search setQuery={setQuery} />
+        <Search setQuery={setQuery} setPaginate={setPaginate}/>
       </div>
       <ol className="list">
-        {data &&
-          data.map((newsItem) => {
+        {data.slice(0, paginate).map((newsItem) => {
             if (
               newsItem.title &&
               newsItem.title !== "" &&
@@ -36,6 +37,7 @@ const List = () => {
               return <ListItem dataItem={newsItem} />;
           })}
       </ol>
+      <button style={{ display: paginate >= data.length ? 'none' : 'block' }} onClick={loadMore}>Load More</button>
     </>
   );
 };
