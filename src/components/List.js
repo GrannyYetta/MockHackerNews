@@ -41,9 +41,6 @@ const List = () => {
         <Search setQuery={setQuery} />
       </div>
       <ol className="list">
-        {currentNews.map((newsItem) => {
-          return <ListItem data={newsItem} key={newsItem.url}/>;
-        })}
         {data &&
           data.map((newsItem) => {
             if (
