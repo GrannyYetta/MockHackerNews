@@ -15,19 +15,19 @@ const List = () => {
         setData(response.data.hits);
       })
       .catch((err) => alert(err));
-
   }, [query]);
 
   const loadMore = () => {
     setPaginate((prevValue) => prevValue + 5);
-  }
+  };
   return (
     <>
       <div className="Search">
-        <Search setQuery={setQuery} setPaginate={setPaginate}/>
+        <Search setQuery={setQuery} setPaginate={setPaginate} />
       </div>
-      <ol className="list">
-        {data.slice(0, paginate).map((newsItem) => {
+      <div className="contentBox">
+        <ol className="list">
+          {data.slice(0, paginate).map((newsItem) => {
             if (
               newsItem.title &&
               newsItem.title !== "" &&
@@ -36,8 +36,17 @@ const List = () => {
             )
               return <ListItem dataItem={newsItem} />;
           })}
-      </ol>
-      <button style={{ display: paginate >= data.length ? 'none' : 'block' }} onClick={loadMore}>Load More</button>
+        </ol>
+        <div className="buttonBox">
+          <button
+            className="glow-on-hover"
+            style={{ display: paginate >= data.length ? "none" : "block" }}
+            onClick={loadMore}
+          >
+            Load More
+          </button>
+        </div>
+      </div>
     </>
   );
 };
