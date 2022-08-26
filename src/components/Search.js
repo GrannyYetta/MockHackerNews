@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ListItem from "./ListItem";
 
 const Search = (props) => {
   const [inputText, setInputText] = useState("");

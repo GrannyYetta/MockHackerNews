@@ -6,9 +6,6 @@ import Search from "./Search";
 const List = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
-  const [number, setNumber] = useState(1);
-  const postPerPage = 10;
-  const pageNumber = [];
 
   useEffect(() => {
     axios
@@ -21,19 +18,6 @@ const List = () => {
 
     //const [info ,setInfo]= useState(response.data);
   }, [query]);
-
-  const totalPosts = data.length;
-  const lastPost = number * postPerPage;
-  const firstPost = lastPost - postPerPage;
-  const currentNews = data.slice(firstPost, lastPost);
-
-  const ChangePage = (pageNumber) => {
-    setNumber(pageNumber);
-  }
-  
-  for (let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {
-    pageNumber.push(i);
-  }
 
   return (
     <>
@@ -52,13 +36,6 @@ const List = () => {
               return <ListItem dataItem={newsItem} />;
           })}
       </ol>
-      {pageNumber.map((number) => {
-        return (
-        <div className="pagination-bar">
-          <button className="number-button" onClick={() => ChangePage(number)}>{number}</button>
-        </div>
-        );
-      })}
     </>
   );
 };
